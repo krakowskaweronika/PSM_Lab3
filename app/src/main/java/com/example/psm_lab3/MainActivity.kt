@@ -36,7 +36,9 @@ import androidx.compose.ui.res.pluralStringResource
 import android.app.LocaleManager
 import android.os.Build
 import android.os.LocaleList
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.saveable.rememberSaveable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,8 +61,8 @@ fun JokeScreen() {
 
     val jokes = stringArrayResource(id = R.array.jokes_array)
 
-    var currentJokeIndex by remember { mutableIntStateOf(jokes.indices.random()) }
-    var viewedJokesCount by remember { mutableIntStateOf(1) }
+    var currentJokeIndex by rememberSaveable() { mutableIntStateOf(jokes.indices.random()) }
+    var viewedJokesCount by rememberSaveable { mutableIntStateOf(1) }
 
     val context = LocalContext.current
     Column(
@@ -92,12 +94,13 @@ fun JokeScreen() {
             },
             shape = CircleShape,
             colors = ButtonDefaults.buttonColors(containerColor = deepPink),
-            modifier = Modifier.size(150.dp)
+            modifier = Modifier.size(200.dp)
         ) {
             Text(
                 text = stringResource(id = R.string.button_show_joke),
                 textAlign = TextAlign.Center,
-                color = pastelPink
+                color = pastelPink,
+                modifier = Modifier.padding(8.dp)
             )
         }
 
@@ -131,6 +134,19 @@ fun JokeScreen() {
             ) {
                 Text(text = "EN", color = deepPink, fontWeight = FontWeight.Bold)
             }
+            Spacer(modifier = Modifier.width(16.dp))
+            Button(
+                onClick = {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        val localeManager = context.getSystemService(LocaleManager::class.java)
+                        // Przekazanie pustej listy resetuje aplikację do języka systemu
+                        localeManager.applicationLocales = LocaleList.getEmptyLocaleList()
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = pastelPink)
+            ) {
+                Text(text = "Systemowy", color = deepPink, fontWeight = FontWeight.Bold)
+            }
         }
 
 
@@ -142,17 +158,17 @@ fun JokeScreen() {
             ),
             textAlign = TextAlign.Center,
             color = deepPink,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
+
         Text(
-            text = stringResource(
-                id = R.string.greeting,
-                stringResource(id = R.string.guest_name),
-                viewedJokesCount
-            ),
+            text = stringResource(id = R.string.greeting, stringResource(id = R.string.guest_name), viewedJokesCount),
             textAlign = TextAlign.Center,
-            color = deepPink
+            color = deepPink,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
     }
 }
