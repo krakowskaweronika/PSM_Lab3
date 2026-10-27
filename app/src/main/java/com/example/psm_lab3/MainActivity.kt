@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.pluralStringResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +54,7 @@ fun JokeScreen() {
     val jokes = stringArrayResource(id = R.array.jokes_array)
 
     var currentJokeIndex by remember { mutableIntStateOf(jokes.indices.random()) }
+    var viewedJokesCount by remember { mutableIntStateOf(1) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,7 +78,8 @@ fun JokeScreen() {
         )
 
         Button(
-            onClick = { currentJokeIndex = jokes.indices.random()},
+            onClick = { currentJokeIndex = jokes.indices.random()
+                        viewedJokesCount++ },
             shape = CircleShape,
             colors = ButtonDefaults.buttonColors(containerColor = deepPink),
             modifier = Modifier.size(150.dp)
@@ -89,6 +92,17 @@ fun JokeScreen() {
         }
 
         Spacer(modifier = Modifier.height(32.dp))
+
+        Text(
+            text = pluralStringResource(
+                id = R.plurals.jokes_viewed_count,
+                count = viewedJokesCount,
+                viewedJokesCount
+            ),
+            textAlign = TextAlign.Center,
+            color = deepPink,
+            fontWeight = FontWeight.Bold
+        )
 
         Text(
             text = stringResource(id = R.string.greeting, "Weronika", 1),

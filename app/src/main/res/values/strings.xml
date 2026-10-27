@@ -7,4 +7,8 @@
         <item>A tester walks into a bar. Orders a beer. Orders 0 beers. Orders 999999999 beers. Orders a lizard. Orders -1 beers.</item>
         <item>What do you call a boomerang that won\'t come back? A stick.</item>
     </string-array>
+    <plurals name="jokes_viewed_count">
+        <item quantity="one">%d joke seen so far</item>
+        <item quantity="other">%d jokes seen so far</item>
+    </plurals>
 </resources>

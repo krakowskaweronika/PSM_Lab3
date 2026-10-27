@@ -4,8 +4,14 @@
     <string name="button_show_joke">Pokaż żart</string>
     <string name="greeting">Cześć, %1$s! Oto twój żart numer %2$d.</string>
     <string-array name="jokes_array">
-        <item>Na świecie jest 10 rodzajów ludzi: ci, którzy rozumieją system binarny, i ci, którzy go nie rozumieją.</item>
+        <item>Przychodzi koń do baru, a barman pyta: "Dlaczego masz taką podłużną minę?"</item>
         <item>Tester wchodzi do baru. Zamawia piwo. Zamawia 0 piw. Zamawia 999999999 piw. Zamawia jaszczurkę. Zamawia -1 piwa.</item>
         <item>Jak nazywa się bumerang, który nie wraca? Patyk.</item>
     </string-array>
+    <plurals name="jokes_viewed_count">
+        <item quantity="one">Obejrzano %d żart</item>
+        <item quantity="few">Obejrzano %d żarty</item>
+        <item quantity="many">Obejrzano %d żartów</item>
+        <item quantity="other">Obejrzano %d żartu/żartów</item>
+    </plurals>
 </resources>
