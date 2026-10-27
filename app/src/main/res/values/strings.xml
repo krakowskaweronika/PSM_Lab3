@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Joke App</string>
+    <string name="button_show_joke">Show a joke</string>
+    <string name="greeting">Hello, %1$s! Here is your joke number %2$d.</string>
+    <string name="joke_placeholder">Joke will be here</string>
+</resources>
