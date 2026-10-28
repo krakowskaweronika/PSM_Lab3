@@ -27,4 +27,4 @@ Zapisanie tego warunkami if/else w kodzie jest niepraktyczne i nie skaluje się 
 ## Który zestaw zasobów powinien być domyślny i dlaczego?
 Domyślnym zestawem zasobów (katalog res/values bez żadnego sufiksu językowego) powinien być język angielski. Android ładuje zasoby z tego katalogu zawsze,
 gdy nie znajdzie tłumaczenia pasującego do języka ustawionego w systemie telefonu (tzw. "fallback"). Ponieważ angielski jest uniwersalnym językiem międzynarodowym, 
-gwarantuje to, że użytkownicy z krajów, dla których nie przygotowano dedykowanego tłumaczenia (np. z Hiszpanii czy Japonii), nadal będą w stanie korzystać z aplikacji.
+gwarantuje to, że użytkownicy z krajów, dla których nie przygotowano dedykowanego tłumaczenia, nadal będą w stanie korzystać z aplikacji.
